@@ -28,7 +28,16 @@ test.beforeEach(async ({ page }) => {
     test('Verify that Clicking the delete button will remove one of the delete buttons', async ({ page }) => {
         await AddRemoveElementsPage.clickAddElementButton(page);
         await AddRemoveElementsPage.clickAddElementButton(page);
+        await expect(page.locator(AddRemoveElementsPage.deleteButton)).toHaveCount(2);
         
         await AddRemoveElementsPage.clickDeleteButton(page);
+        await expect(page.locator(AddRemoveElementsPage.deleteButton)).toHaveCount(1);
+    })
+
+    test('Verify that there can be at least 20 delete buttons on the page', async ({ page }) => {
+        for(let i=0; i < 20; i++){
+            await AddRemoveElementsPage.clickAddElementButton(page);
+        }
+        await expect(page.locator(AddRemoveElementsPage.deleteButton)).toHaveCount(20);
     })
 })
