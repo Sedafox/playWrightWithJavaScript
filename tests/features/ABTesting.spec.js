@@ -9,7 +9,7 @@ test.beforeEach(async ({ page }) => {
 test.describe('Tests things On The ABTesting page', () => {
 
   test('Verify The AB Testing URL', async ({ page }) => {
-    await ABTestingPage.verifyPageURL(page);
+    await expect(page).toHaveURL(ABTestingPage.pageURL);
   })
 
   test('Verify The AB Testing Page displays a Bold Text that says: "No A/B Test"', async ({ page }) => {
