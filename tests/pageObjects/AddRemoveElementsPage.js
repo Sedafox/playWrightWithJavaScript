@@ -15,3 +15,11 @@ export const pageURL = baseURL + "/add_remove_elements/";
 export async function goToPage(page){
     await page.goto(pageURL);
 }
+
+export async function clickAddElementButton(page){
+    await page.locator(addElementButton).click();
+}
+
+export async function clickDeleteButton(page){
+    await page.locator(deleteButton).first().click();
+}
